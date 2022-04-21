@@ -1,0 +1,3 @@
+python manage.py migarate
+python manage.py makemigrations <name_app>
+python manage.py startapp <name_app>
