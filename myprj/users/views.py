@@ -25,7 +25,6 @@ def add_record(request):
     # if request.method == 'POST':
     name = request.POST['usernameInput']
     pws  = request.POST['passwordInput']
-    print(name, pws)
     # create new user
     users(username=name, password=pws).save()
     return HttpResponseRedirect(reverse('get_user'))
@@ -33,4 +32,22 @@ def add_record(request):
 # Delete record
 def del_record(request, id):
     users.objects.get(id=id).delete()
+    return HttpResponseRedirect(reverse('get_user'))
+
+# Edit record
+def edit_record(request, id):
+    user = users.objects.get(id=id)
+    temp = loader.get_template('edituser.html')
+    context= {
+        'user':user,
+    }
+    return HttpResponse(temp.render(context, request))
+
+def update_edit_record(request, id):
+    u_name = request.POST['usernameInput']
+    pw = request.POST['passwordInput']
+    user = users.objects.get(id=id)
+    user.username = u_name
+    user.password = pw
+    user.save()
     return HttpResponseRedirect(reverse('get_user'))

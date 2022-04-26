@@ -1,1 +1,4 @@
 django==4.0.4
+pymongo
+pymongo[srv]
+asyncio
