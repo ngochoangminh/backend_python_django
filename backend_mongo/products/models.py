@@ -1,15 +1,31 @@
+import sys
+sys.path.append('.')
 from pymongo.errors import CollectionInvalid
 from collections import OrderedDict
 from backend_mongo.py_mongodb import get_db
-db = get_db()
 
+db = get_db()
+collection = 'products'
 products_schema ={
     'name': {
         'type': 'string',
         'required': True,
     },
+    'brand':{
+        'type':'string',
+        "nullable": True,
+    },
+    'catalog':{
+        'type':'string',
+        "nullable": True,
+    },
     'images':{
-        'type':'text'
+        'type':'text',
+        "nullable": True,
+    },
+    'stock':{
+        'type': 'int',
+        'required': True,  
     },
     'price':{
         'type': 'int',
@@ -21,11 +37,16 @@ products_schema ={
     },
     'description':{
         'type':'text',
+        "nullable": True,
     }
 }
 
-collection = 'products'
-validator = {'$jsonSchema': {'bsonType': 'object', 'properties': {}}}
+validator = {
+                '$jsonSchema': {
+                    'bsonType': 'object', 
+                    'properties': {}
+                    }    
+            }
 required = []
 
 for field_key in products_schema:
@@ -43,12 +64,11 @@ for field_key in products_schema:
 if len(required) > 0:
     validator['$jsonSchema']['required'] = required
 
-query = [('collMod', collection),
-         ('validator', validator)]
+query = [('collMod', collection), ('validator', validator)]
 
-try:
-    db.create_collection(collection)
-except CollectionInvalid:
-    pass
+# try:
+#     db.create_collection(collection)
+# except CollectionInvalid:
+#     pass
 
-command_result = db.command(OrderedDict(query))
+# command_result = db.command(OrderedDict(query))

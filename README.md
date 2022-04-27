@@ -8,3 +8,7 @@ pip install -r requirement.txt
 ```
 python ../manage.py runserver
 ```
+
+```
+git add * && git commit -m 'add 274' && git push
+```

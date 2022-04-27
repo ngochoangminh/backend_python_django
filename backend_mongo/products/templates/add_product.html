@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body >
+    <div class="container-md"> 
+        <h1>Add product</h1>
+        <form action="add_product/" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label  class="form-label">Product name</label>
+                <input type="text" class="form-control" name="productNameInput" placeholder="Enter product name">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Brand name</label>
+                <input type="text" class="form-control" name="brandInput" placeholder="Enter brand name">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Warranty</label>
+                <input type="text" class="form-control" name="warrantyInput" placeholder="Enter warranty">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Images</label>
+                <input type="text" class="form-control" name="imagesInput" placeholder="Upload product images">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Price</label>
+                <input type="text" class="form-control" name="priceInput" placeholder="Enter product price">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Catalog</label>
+                <input type="text" class="form-control" name="catalogInput" placeholder="Enter product catalog">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Stock</label>
+                <input type="text" class="form-control" name="stockInput" placeholder="Enter product name">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Description</label>
+                <input type="text" class="form-control" name="descriptionInput" placeholder="Enter Description">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+   
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
